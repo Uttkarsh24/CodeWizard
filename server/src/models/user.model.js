@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "Unranked",
     },
-    // history
+    rankUrl: {
+        type: String,
+        default: "https://i.imgur.com/bYzbDwg.png",
+    },
 }, {
     timestamps: true,
 });
