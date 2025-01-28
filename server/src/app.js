@@ -16,15 +16,12 @@ app.use(cors({
 }));
 
 import userRoutes from "./routes/user.routes.js";
-
 app.use("/api/v1/users", userRoutes);
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-});
-
-//search routes
 import searchRouter from "./routes/search.routes.js";
 app.use("/api/v1", searchRouter);
+
+import generationRouter from "./routes/generation.routes.js";
+app.use("/api/v1/generate", generationRouter);
 
 export default app;
