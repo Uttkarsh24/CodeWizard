@@ -3,6 +3,7 @@ import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
 import generateContent from "../helpers/generateContent.helper.js";
 import scrambleData from "../dataset/scramble.data.js";
+import getScrambleWords from "../helpers/getScrambleWords.helper.js";
 
 const generateQuiz = asyncHandler(async (req, res) => {
     const { title } = req.body;
@@ -21,7 +22,7 @@ const generateQuiz = asyncHandler(async (req, res) => {
 
 const generateScramble = asyncHandler(async (req, res) => {
     try {
-        const content = scrambleData;
+        const content = getScrambleWords(scrambleData, 10);
         return res
             .status(200)
             .json(new ApiResponse(200, "Scramble generated successfully", content));
