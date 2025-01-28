@@ -5,7 +5,7 @@ import User from "../models/user.model.js";
 import { hashPassword, comparePassword } from "../helpers/bcrypt.helper.js";
 import { generateToken } from "../helpers/generateToken.helper.js";
 import { COOKIE_OPTIONS } from "../constants.js";
-import updateRank from "../helpers/updateRank.helper.js";
+import { updateRank, updateRankUrl } from "../helpers/updateRank.helper.js";
 
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, username, password } = req.body;
@@ -83,10 +83,34 @@ const addPoints = asyncHandler(async (req, res) => {
             user.token = 0;
         }
         user.rank = updateRank(user.token);
+        user.rankUrl = updateRankUrl(user.token);
         await user.save();
         return res
             .status(200)
             .json(new ApiResponse(200, "Points added successfully", user));
+    } catch (error) {
+        throw new ApiError(500, error.message);
+    }
+});
+
+const leaderboard = asyncHandler(async (req, res) => {
+    try {
+        const users = await User.find().sort({ token: -1 });
+        return res.status(200).json(new ApiResponse(200, "Leaderboard fetched successfully", users));
+    } catch (error) {
+        throw new ApiError(500, error.message);
+    }
+});
+
+const leaderboardByRank = asyncHandler(async (req, res) => {
+    const id = req.user.userId;
+    const user = await User.findById(id);
+    if (!user) {
+        throw new ApiError(400, "User not found");
+    }
+    try {
+        const users = await User.find({ rank: user.rank }).sort({ token: -1 });
+        return res.status(200).json(new ApiResponse(200, "Leaderboard fetched successfully", users));
     } catch (error) {
         throw new ApiError(500, error.message);
     }
@@ -97,5 +121,7 @@ export {
     loginUser,
     logoutUser,
     dashboard,
-    addPoints
+    addPoints,
+    leaderboard,
+    leaderboardByRank
 };
