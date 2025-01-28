@@ -1,14 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
+
 import Browse from "./Browse";
+
+// import UsernameRecover from "./UsernameRecover";
 const Body = () => {
   const approuter = createBrowserRouter([
-    {path:"/",element:<Browse/>},
-    {path: "/login", element: <Login />},
-    {path: "/Register", element: <Register/>},
-
-    // {path : "/UsernameRecover" , element : <UsernameRecover/>},
+    { path: "/", element: <Browse /> },
+   
     
   ]);
 
