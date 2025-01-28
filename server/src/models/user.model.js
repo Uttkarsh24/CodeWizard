@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     rank: {
         type: String,
-        default: "Bronze",
+        default: "Unranked",
     },
     // history
 }, {
