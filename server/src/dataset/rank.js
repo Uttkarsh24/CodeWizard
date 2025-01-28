@@ -1,39 +1,39 @@
 const rank = [
     {
         "title": "Unranked",
-        "points": 0
+        "points": 'https://imgur.com/bYzbDwg'
     },
     {
         "title": "Bronze",
-        "points": 100
+        "points": 'https://imgur.com/ZsB4XkX'
     },
     {
         "title": "Silver",
-        "points": 150
+        "points": 'https://imgur.com/LzPb4q0'
     },
     {
         "title": "Gold",
-        "points": 300
+        "points": 'https://imgur.com/EF4ueHb'
     },
     {
         "title": "Platinum",
-        "points": 450
+        "points": 'https://imgur.com/YPgo4DM'
     },
     {
         "title": "Diamond",
-        "points": 700
+        "points": 'https://imgur.com/TzF1r5A'
     },
     {
         "title": "Ruby",
-        "points": 1000
+        "points": 'https://imgur.com/vQCh2Xe'
     },
     {
         "title": "Sapphire",
-        "points": 1350
+        "points": 'https://imgur.com/Ld3ydFG'
     },
     {
         "title": "Master",
-        "points": 1500
+        "points": 'https://imgur.com/99mA2bp'
     }
 ]
 
