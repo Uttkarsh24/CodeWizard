@@ -6,7 +6,7 @@ import scrambleData from "../dataset/scramble.data.js";
 import getScrambleWords from "../helpers/getScrambleWords.helper.js";
 
 const generateQuiz = asyncHandler(async (req, res) => {
-    const { title } = req.body;
+    const { title } = req.query;
     if (!title) {
         throw new ApiError(400, "Title is required");
     }
