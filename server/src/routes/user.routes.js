@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { registerUser, loginUser, logoutUser, dashboard, addPoints } from "../controllers/user.controller.js";
+import { registerUser, loginUser, logoutUser, dashboard, addPoints, leaderboard, leaderboardByRank } from "../controllers/user.controller.js";
 
 import authenticateUser from "../middlewares/auth.middleware.js";
 
@@ -14,5 +14,7 @@ router.post("/login", loginUser);
 router.post("/logout", authenticateUser, logoutUser);
 router.get("/dashboard", authenticateUser, dashboard);
 router.post("/addPoints", authenticateUser, addPoints);
+router.get("/leaderboard", authenticateUser, leaderboard);
+router.get("/leaderboardByRank", authenticateUser, leaderboardByRank);
 
 export default router;
